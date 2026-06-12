@@ -3,6 +3,11 @@
 import sys
 sys.path.insert(0, ".")
 
+import pytest
+
+pytest.importorskip("kivy")
+pytest.importorskip("kivymd")
+
 from app.models.game_model import GameModel
 from app.controllers.game_controller import GameController
 from kivy.uix.screenmanager import ScreenManager

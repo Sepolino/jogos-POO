@@ -139,9 +139,7 @@ class JogoDamas(JogoTabuleiro):
                     self._tabuleiro.definir_celula(linha, coluna, PecaDamas(self._branco, preto=False))
 
     def validar_jogada(self, jogada: Jogada) -> bool:
-        valido, motivo = self._regras.validar_todas(jogada, self._tabuleiro)
-        if not valido:
-            print(f"  ✗ {motivo}")
+        valido, _motivo = self._regras.validar_todas(jogada, self._tabuleiro)
         return valido
 
     def aplicar_jogada(self, jogada: Jogada) -> None:

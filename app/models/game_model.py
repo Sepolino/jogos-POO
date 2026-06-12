@@ -71,13 +71,15 @@ class GameModel:
                 self._selected_origin = (row, column)
                 return True
             origin_row, origin_column = self._selected_origin
-            self._selected_origin = None
-            return self._game.realizar_jogada_posicao(
+            accepted = self._game.realizar_jogada_posicao(
                 row,
                 column,
                 origin_row,
                 origin_column,
             )
+            if accepted:
+                self._selected_origin = None
+            return accepted
 
         return self._game.realizar_jogada_posicao(row, column)
 

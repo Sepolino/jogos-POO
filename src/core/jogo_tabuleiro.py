@@ -74,15 +74,12 @@ class JogoTabuleiro(ABC):
             True se a jogada foi aceita, False caso contrário.
         """
         if self._partida_encerrada:
-            print("A partida já foi encerrada.")
             return False
 
         if jogada.jogador != self.jogador_atual:
-            print(f"Não é o turno de {jogada.jogador.nome}.")
             return False
 
         if not self.validar_jogada(jogada):
-            print("Jogada inválida.")
             return False
 
         self.aplicar_jogada(jogada)

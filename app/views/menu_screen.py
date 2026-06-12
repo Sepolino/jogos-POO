@@ -28,7 +28,7 @@ class MenuScreen(BaseScreen):
             dialog.dismiss()
             DialogService.show_message(
                 "Sobre",
-                "Jogo da Velha\nVersão 1.0\nAutor: Projeto POO - Exemplo",
+                "Jogo da Velha\nVersão 1.0\nAutor:\nCarlos Chen\nFelipe Savegnago Pires\nMarcus Vinícius Milan da Silva",
             )
 
         dialog = MDDialog(

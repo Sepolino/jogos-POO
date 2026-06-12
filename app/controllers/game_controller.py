@@ -1,7 +1,5 @@
 """Controller que orquestra fluxo entre Model e Views."""
 
-from kivymd.app import MDApp
-
 from app.models.game_model import GameModel
 
 
@@ -97,6 +95,8 @@ class GameController:
 
     def exit_app(self) -> None:
         """Fecha o aplicativo de forma controlada."""
+        from kivymd.app import MDApp
+
         MDApp.get_running_app().stop()
 
     @property

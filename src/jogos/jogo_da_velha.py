@@ -58,9 +58,7 @@ class JogoDaVelha(JogoTabuleiro):
 
     def validar_jogada(self, jogada: Jogada) -> bool:
         """Valida se a posicao escolhida esta dentro do tabuleiro e vazia."""
-        valido, motivo = self._regras.validar_todas(jogada, self._tabuleiro)
-        if not valido:
-            print(f"  X {motivo}")
+        valido, _motivo = self._regras.validar_todas(jogada, self._tabuleiro)
         return valido
 
     def aplicar_jogada(self, jogada: Jogada) -> None:

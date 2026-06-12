@@ -1,0 +1,212 @@
+#:import dp kivy.metrics.dp
+#:import MDIcon kivymd.uix.label.MDIcon
+
+<MenuScreen>:
+    MDBoxLayout:
+        orientation: "vertical"
+
+        MDTopAppBar:
+            title: "Jogo da Velha MVC"
+            elevation: 4
+            left_action_items: [["gamepad-variant", lambda x: None]]
+
+        MDBoxLayout:
+            orientation: "vertical"
+            padding: dp(24)
+            spacing: dp(18)
+
+            Widget:
+
+            MDIcon:
+                icon: "view-grid-plus"
+                halign: "center"
+                font_size: "64sp"
+                theme_text_color: "Custom"
+                text_color: app.theme_cls.primary_color
+
+            MDLabel:
+                text: "Jogo da Velha"
+                halign: "center"
+                font_style: "H3"
+                size_hint_y: None
+                height: self.texture_size[1]
+
+            MDCard:
+                orientation: "vertical"
+                padding: dp(16)
+                spacing: dp(12)
+                size_hint: (1, None)
+                height: dp(190)
+                radius: [8, 8, 8, 8]
+                elevation: 2
+
+                MDRaisedButton:
+                    text: "Nova Partida"
+                    size_hint_x: 1
+                    on_release: root.controller.show_config()
+
+                MDRaisedButton:
+                    text: "Configuracoes"
+                    size_hint_x: 1
+                    on_release: root.controller.show_config()
+
+                MDRaisedButton:
+                    text: "Sair"
+                    size_hint_x: 1
+                    on_release: root.controller.exit_app()
+
+            Widget:
+
+<ConfigScreen>:
+    MDBoxLayout:
+        orientation: "vertical"
+
+        MDTopAppBar:
+            title: "Configuracao de Partida"
+            elevation: 4
+            left_action_items: [["arrow-left", lambda x: root.controller.show_menu()]]
+
+        MDBoxLayout:
+            orientation: "vertical"
+            padding: dp(24)
+            spacing: dp(16)
+
+            MDCard:
+                orientation: "vertical"
+                padding: dp(16)
+                spacing: dp(14)
+                size_hint: (1, None)
+                height: dp(270)
+                radius: [8, 8, 8, 8]
+                elevation: 2
+
+                MDLabel:
+                    text: "Quantidade de jogadores: 2"
+                    font_style: "H6"
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+                MDTextField:
+                    id: player_one
+                    hint_text: "Nome do Jogador 1"
+                    text: "Jogador 1"
+                    helper_text: "Simbolo X"
+                    helper_text_mode: "persistent"
+
+                MDTextField:
+                    id: player_two
+                    hint_text: "Nome do Jogador 2"
+                    text: "Jogador 2"
+                    helper_text: "Simbolo O"
+                    helper_text_mode: "persistent"
+
+                MDRaisedButton:
+                    text: "Iniciar Partida"
+                    size_hint_x: 1
+                    on_release: root.start_match()
+
+            Widget:
+
+<BoardScreen>:
+    MDBoxLayout:
+        orientation: "vertical"
+
+        MDTopAppBar:
+            title: "Tabuleiro"
+            elevation: 4
+            left_action_items: [["home", lambda x: root.controller.show_menu()]]
+            right_action_items: [["restart", lambda x: root.controller.restart_match()]]
+
+        MDBoxLayout:
+            orientation: "vertical"
+            padding: dp(12)
+            spacing: dp(10)
+
+            MDCard:
+                orientation: "vertical"
+                padding: dp(12)
+                spacing: dp(8)
+                size_hint: (1, None)
+                height: dp(105)
+                radius: [8, 8, 8, 8]
+                elevation: 1
+
+                MDLabel:
+                    id: turn_label
+                    text: "Vez de:"
+                    font_style: "H6"
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+                MDLabel:
+                    id: score_label
+                    text: ""
+                    font_style: "Body2"
+                    size_hint_y: None
+                    height: dp(48)
+
+            GridLayout:
+                id: board_grid
+                cols: 3
+                rows: 3
+                size_hint: (1, 1)
+                spacing: dp(8)
+
+            MDRaisedButton:
+                text: "Reiniciar Partida"
+                size_hint_x: 1
+                on_release: root.controller.restart_match()
+
+<ResultScreen>:
+    MDBoxLayout:
+        orientation: "vertical"
+
+        MDTopAppBar:
+            title: "Resultado"
+            elevation: 4
+            left_action_items: [["home", lambda x: root.controller.show_menu()]]
+
+        MDBoxLayout:
+            orientation: "vertical"
+            padding: dp(24)
+            spacing: dp(16)
+
+            MDIcon:
+                icon: "trophy"
+                halign: "center"
+                font_size: "56sp"
+                theme_text_color: "Custom"
+                text_color: app.theme_cls.accent_color
+
+            MDCard:
+                orientation: "vertical"
+                padding: dp(16)
+                spacing: dp(12)
+                size_hint: (1, None)
+                height: dp(230)
+                radius: [8, 8, 8, 8]
+                elevation: 2
+
+                MDLabel:
+                    id: winner_label
+                    text: "Resultado:"
+                    halign: "center"
+                    font_style: "H5"
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+                MDLabel:
+                    id: stats_label
+                    text: ""
+                    halign: "center"
+                    font_style: "Body1"
+
+            MDRaisedButton:
+                text: "Nova Partida"
+                size_hint_x: 1
+                on_release: root.controller.restart_match()
+
+            MDRaisedButton:
+                text: "Sair"
+                size_hint_x: 1
+                on_release: root.controller.exit_app()

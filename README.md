@@ -1,3 +1,8 @@
+# Grupo
+-Marcus Vinícius Milan da Silva
+-Felipe Savegnago Pires
+-Carlos Chen
+
 # Jogo da Velha com Python, POO e KivyMD
 
 Este projeto foi desenvolvido para a disciplina de Programacao Orientada a
